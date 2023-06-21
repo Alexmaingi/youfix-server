@@ -1,0 +1,157 @@
+# Get all users
+####
+GET http://localhost:5000/users
+
+# Get a user by id
+#####
+GET http://localhost:5000/users/6605e98b-7675-41bb-ab5b-dd40cb518761
+
+# get a user by email
+#####
+GET http://localhost:5000/users/email/alexmaingi@example.com
+
+# delete a user
+#####
+DELETE  http://localhost:5000/users/a1579615-0144-4def-aa17-7e0c676ccdc2
+
+# add a user
+#####
+POST http://localhost:5000/users
+Content-Type:  application/json
+
+{
+   "username":"Alexmaingi" ,
+   "email":"m@gmail.com",
+   "password":"alexmaingi"
+}
+
+# log in a user
+#####
+POST http://localhost:5000/users/login
+Content-Type:  application/json
+
+{
+    "email":"youngboy@example.com",
+   "password":"youngboy"
+}
+
+
+# update a user
+#####
+PUT  http://localhost:5000/users/6605e98b-7675-41bb-ab5b-dd40cb518761
+Content-Type:  application/json
+
+{
+   "username":"Youngboy" ,
+   "email":"youngboy@example.com",
+   "about":"I am a software developer with over 6 years of expirience and  have worked in more that 10 projects",
+   "title":"Software Developer"
+  
+}
+
+
+
+# add question
+#####
+POST  http://localhost:5000/questions/d060abd2-0f12-4616-888d-012ee54104e7
+Content-Type:  application/json
+
+{
+   "title":"merge branches" ,
+   "body":"I am a have worked in more that 10 projects",
+   "tags":[{"tagname":"#Git"}]
+  
+}
+
+
+
+//get all questions
+###
+GET http://localhost:5000/questions?pageNumber=8&pageSize=3
+
+
+# get questions by user id
+#####
+GET   http://localhost:5000/questions/d060abd2-0f12-4616-888d-012ee54104e7
+
+
+
+//get one question
+###
+GET http://localhost:5000/questions/question/07d6674b-cc31-443b-aa07-2d80798deacc
+
+
+
+# delete a question
+#####
+DELETE http://localhost:5000/questions/delete/10dc4c8a-e25c-4dbd-809b-bab6d5d753d6
+
+
+//update question
+###
+PUT http://localhost:5000/questions/update/d3d426c4-954c-4bea-80e6-a4a0332e540a/d060abd2-0f12-4616-888d-012ee54104e7
+Content-Type:  application/json
+
+{
+    "title":" question", 
+   "body":"a update" ,
+   "tags":[{"tagname":"React js"}]
+   
+   }
+
+
+
+
+# POST answer
+####
+POST http://localhost:5000/answers/07d6674b-cc31-443b-aa07-2d80798deacc/8961d036-ef55-47e1-b807-5c86929bbc27
+Content-Type:  application/json
+
+{
+    "body": "the looong answer pt 5 "
+}
+
+
+
+# get answers
+####
+GET  http://localhost:5000/answers/07d6674b-cc31-443b-aa07-2d80798deacc
+
+
+
+# mark as acepted
+####
+POST http://localhost:5000/answers/answer/accepted/83610b71-2704-4c6c-9b30-7241c3959fd2
+
+
+
+
+
+
+# add comment
+######
+POST http://localhost:5000/comments/3e4f4260-4562-430f-bea8-83c01c4d3ee7/d060abd2-0f12-4616-888d-012ee54104e7
+Content-Type:  application/json
+
+{
+    "body": "the comment number 2"
+   
+   }
+
+
+   # get comment by question id
+######
+GET  http://localhost:5000/comments/3e4f4260-4562-430f-bea8-83c01c4d3ee7/
+
+
+
+
+# upvote
+######
+POST http://localhost:5000/votes/upvote/86279d7c-24c1-4086-b823-91389af1acc1/d060abd2-0f12-4616-888d-012ee54104e7
+
+
+
+# upvote
+######
+POST http://localhost:5000/votes/downvote/86279d7c-24c1-4086-b823-91389af1acc1/461d514f-3ec2-4e8c-82a9-0edff0d75302

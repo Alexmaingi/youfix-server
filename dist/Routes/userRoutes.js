@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const verifyToken_1 = require("./../Middleware/verifyToken");
+const express_1 = require("express");
+const userController_1 = require("../Controllers/userController");
+const userRoutes = (0, express_1.Router)();
+userRoutes.post("", userController_1.addUser);
+userRoutes.get("", userController_1.getallUsers);
+userRoutes.get("/:id", userController_1.getUserById);
+userRoutes.get("/email/:email", userController_1.getUserByEmail);
+userRoutes.put("/:id", verifyToken_1.verifyToken, userController_1.updateUser);
+userRoutes.delete("/:id", verifyToken_1.verifyToken, userController_1.deleteUser);
+userRoutes.post("/login", userController_1.loginUser);
+exports.default = userRoutes;

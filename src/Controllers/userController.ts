@@ -35,7 +35,9 @@ export const addUser = async (req: ExtendedRequest, res: Response) => {
       expiresIn: "360000s",
     });
 
-    return res.json({ message: "User registered successfull", token });
+    return res
+      .status(201)
+      .json({ message: "User registered successfull", token });
   } catch (error: any) {
     return res.status(500).json(error.message);
   }
@@ -118,12 +120,14 @@ export const updateUser = async (req: ExtendedRequest, res: Response) => {
 
 // delete user
 
-export const deleteUser = async (
-  req: Request<{ id: string }>,
-  res: Response
-) => {
+export const deleteUser = async (req: ExtendedRequest, res: Response) => {
   try {
     const { id } = req.params;
+    const role = req.info?.role as string;
+
+    if (role != "admin") {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
 
     let user: User = (await await DatabaseHelper.exec("getUserById", { id }))
       .recordset[0];
@@ -165,7 +169,9 @@ export const loginUser = async (req: Request, res: Response) => {
     });
     const role = user[0].role;
     const id = user[0].id;
-    return res.json({ message: "Log in successfull", token, role, id });
+    return res
+      .status(200)
+      .json({ message: "Log in successfull", token, role, id });
   } catch (error: any) {
     return res.status(404).json({ message: error.message });
   }

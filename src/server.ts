@@ -5,7 +5,7 @@ import answersRoutes from "./Routes/answerRoutes";
 import commentsRoutes from "./Routes/commentRoutes";
 import votesRoutes from "./Routes/votesRoutes";
 
-const app = express();
+export const app = express();
 app.use(json());
 app.use("/users", userRoutes);
 app.use("/questions", questionsRoutes);

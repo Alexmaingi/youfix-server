@@ -39,20 +39,6 @@ const addAnswer = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.addAnswer = addAnswer;
 //get all answers to a question
-// export const getAnswersToQuestion = async (
-//   req: Request<{ questionId: string }>,
-//   res: Response
-// ) => {
-//   try {
-//     const { questionId } = req.params;
-//     let answers: Answer[] = (
-//       await DatabaseHelper.exec("getAnswersByQID", { questionId })
-//     ).recordset;
-//     return res.status(200).json(answers);
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
 const getAnswersToQuestion = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { questionId } = req.params;

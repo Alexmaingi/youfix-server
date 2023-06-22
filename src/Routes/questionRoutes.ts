@@ -1,3 +1,4 @@
+import { verifyToken } from "./../Middleware/verifyToken";
 import { Router } from "express";
 import {
   addQuestion,
@@ -9,12 +10,12 @@ import {
 } from "../Controllers/questionController";
 const questionsRoutes = Router();
 
-questionsRoutes.post("/:userId", addQuestion);
-questionsRoutes.get("", getAllQuestions);
-questionsRoutes.get("/:userId", getAllQuestionsByUser);
-questionsRoutes.get("/question/:id", getOneQuestion);
-questionsRoutes.put("/update/:id/:userId", updateQuestion);
+questionsRoutes.post("/:userId", verifyToken, addQuestion);
+questionsRoutes.get("", verifyToken, getAllQuestions);
+questionsRoutes.get("/:userId", verifyToken, getAllQuestionsByUser);
+questionsRoutes.get("/question/:id", verifyToken, getOneQuestion);
+questionsRoutes.put("/update/:id/:userId", verifyToken, updateQuestion);
 
-questionsRoutes.delete("/delete/:id", deleteQuestion);
+questionsRoutes.delete("/delete/:id", verifyToken, deleteQuestion);
 
 export default questionsRoutes;

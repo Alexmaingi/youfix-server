@@ -35,21 +35,6 @@ export const addAnswer = async (
 
 //get all answers to a question
 
-// export const getAnswersToQuestion = async (
-//   req: Request<{ questionId: string }>,
-//   res: Response
-// ) => {
-//   try {
-//     const { questionId } = req.params;
-//     let answers: Answer[] = (
-//       await DatabaseHelper.exec("getAnswersByQID", { questionId })
-//     ).recordset;
-//     return res.status(200).json(answers);
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
-
 export const getAnswersToQuestion = async (
   req: Request<{ questionId: string }>,
   res: Response

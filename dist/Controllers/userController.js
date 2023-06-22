@@ -55,7 +55,9 @@ const addUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY, {
             expiresIn: "360000s",
         });
-        return res.json({ message: "User registered successfull", token });
+        return res
+            .status(201)
+            .json({ message: "User registered successfull", token });
     }
     catch (error) {
         return res.status(500).json(error.message);
@@ -129,8 +131,13 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.updateUser = updateUser;
 // delete user
 const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
         const { id } = req.params;
+        const role = (_a = req.info) === null || _a === void 0 ? void 0 : _a.role;
+        if (role != "admin") {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
         let user = (yield yield DatabaseHelper_1.DatabaseHelper.exec("getUserById", { id }))
             .recordset[0];
         if (!user) {
@@ -165,7 +172,9 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
         const role = user[0].role;
         const id = user[0].id;
-        return res.json({ message: "Log in successfull", token, role, id });
+        return res
+            .status(200)
+            .json({ message: "Log in successfull", token, role, id });
     }
     catch (error) {
         return res.status(404).json({ message: error.message });

@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const verifyToken_1 = require("./../Middleware/verifyToken");
 const express_1 = require("express");
 const answerController_1 = require("../Controllers/answerController");
 const answersRoutes = (0, express_1.Router)();
-answersRoutes.post("/:questionId/:userId", answerController_1.addAnswer);
-answersRoutes.get("/:questionId", answerController_1.getAnswersToQuestion);
-answersRoutes.post("/answer/accepted/:id", answerController_1.markAsAccepted);
+answersRoutes.post("/:questionId/:userId", verifyToken_1.verifyToken, answerController_1.addAnswer);
+answersRoutes.get("/:questionId", verifyToken_1.verifyToken, answerController_1.getAnswersToQuestion);
+answersRoutes.post("/answer/accepted/:id", verifyToken_1.verifyToken, answerController_1.markAsAccepted);
 exports.default = answersRoutes;

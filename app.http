@@ -1,6 +1,7 @@
 # Get all users
 ####
 GET http://localhost:5000/users
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDVlOThiLTc2NzUtNDFiYi1hYjViLWRkNDBjYjUxODc2MSIsInVzZXJuYW1lIjoiWW91bmdib3kiLCJlbWFpbCI6InlvdW5nYm95QGV4YW1wbGUuY29tIiwiYWJvdXQiOiJJIGFtIGEgc29mdHdhcmUgZGV2ZWxvcGVyIHdpdGggb3ZlciA2IHllYXJzIG9mIGV4cGlyaWVuY2UgYW5kICBoYXZlIHdvcmtlZCBpbiBtb3JlIHRoYXQgMTAgcHJvamVjdHMiLCJyb2xlIjoiYWRtaW4iLCJ0aXRsZSI6IlNvZnR3YXJlIERldmVsb3BlciIsImVtYWlsU2VudCI6MSwiaWF0IjoxNjg3Mzc0NjgzLCJleHAiOjE2ODc3MzQ2ODN9.LePqbvG0IACNPvSV3mk4rQ6JnsUaVF9qwb1D_-1jy6Y
 
 # Get a user by id
 #####
@@ -12,7 +13,9 @@ GET http://localhost:5000/users/email/alexmaingi@example.com
 
 # delete a user
 #####
-DELETE  http://localhost:5000/users/a1579615-0144-4def-aa17-7e0c676ccdc2
+DELETE  http://localhost:5000/users/e7e1147d-4166-4394-be75-26ff3373f09f
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYWJlNDA5LTRiZWYtNGE2MC1hNGZmLTIzMzQxNjkwOTU5ZiIsInVzZXJuYW1lIjoiQWxleG1haW5naSIsImVtYWlsIjoibUBnbWFpbC5jb20iLCJhYm91dCI6bnVsbCwicm9sZSI6InVzZXIiLCJ0aXRsZSI6bnVsbCwiZW1haWxTZW50IjpudWxsLCJpYXQiOjE2ODczNzQ5MTYsImV4cCI6MTY4NzczNDkxNn0.q45nz0HTich3DUVC2rCmj_Y-B2zUAyHXyq2yjMM-yVk
+
 
 # add a user
 #####
@@ -20,10 +23,22 @@ POST http://localhost:5000/users
 Content-Type:  application/json
 
 {
-   "username":"Alexmaingi" ,
-   "email":"m@gmail.com",
+   "username":"Maingi" ,
+   "email":"maingi@gmail.com",
    "password":"alexmaingi"
 }
+
+# log in admin
+#####
+POST http://localhost:5000/users/login
+Content-Type:  application/json
+
+{
+     "email":"maingi@gmail.com",
+   "password":"alexmaingi"
+
+}
+
 
 # log in a user
 #####
@@ -31,8 +46,8 @@ POST http://localhost:5000/users/login
 Content-Type:  application/json
 
 {
-    "email":"youngboy@example.com",
-   "password":"youngboy"
+    "email":"m@gmail.com",
+   "password":"alexmaingi"
 }
 
 
@@ -53,8 +68,10 @@ Content-Type:  application/json
 
 # add question
 #####
-POST  http://localhost:5000/questions/d060abd2-0f12-4616-888d-012ee54104e7
+POST  http://localhost:5000/questions/acabe409-4bef-4a60-a4ff-23341690959f
 Content-Type:  application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDVlOThiLTc2NzUtNDFiYi1hYjViLWRkNDBjYjUxODc2MSIsInVzZXJuYW1lIjoiWW91bmdib3kiLCJlbWFpbCI6InlvdW5nYm95QGV4YW1wbGUuY29tIiwiYWJvdXQiOiJJIGFtIGEgc29mdHdhcmUgZGV2ZWxvcGVyIHdpdGggb3ZlciA2IHllYXJzIG9mIGV4cGlyaWVuY2UgYW5kICBoYXZlIHdvcmtlZCBpbiBtb3JlIHRoYXQgMTAgcHJvamVjdHMiLCJyb2xlIjoiYWRtaW4iLCJ0aXRsZSI6IlNvZnR3YXJlIERldmVsb3BlciIsImVtYWlsU2VudCI6MSwiaWF0IjoxNjg3Mzc0NjgzLCJleHAiOjE2ODc3MzQ2ODN9.LePqbvG0IACNPvSV3mk4rQ6JnsUaVF9qwb1D_-1jy6Y
+
 
 {
    "title":"merge branches" ,
@@ -67,7 +84,9 @@ Content-Type:  application/json
 
 //get all questions
 ###
-GET http://localhost:5000/questions?pageNumber=8&pageSize=3
+GET http://localhost:5000/questions?pageNumber=1&pageSize=3
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYWJlNDA5LTRiZWYtNGE2MC1hNGZmLTIzMzQxNjkwOTU5ZiIsInVzZXJuYW1lIjoiQWxleG1haW5naSIsImVtYWlsIjoibUBnbWFpbC5jb20iLCJhYm91dCI6bnVsbCwicm9sZSI6InVzZXIiLCJ0aXRsZSI6bnVsbCwiZW1haWxTZW50IjpudWxsLCJpYXQiOjE2ODczNzQ5MTYsImV4cCI6MTY4NzczNDkxNn0.q45nz0HTich3DUVC2rCmj_Y-B2zUAyHXyq2yjMM-yVk
+
 
 
 # get questions by user id
@@ -78,13 +97,15 @@ GET   http://localhost:5000/questions/d060abd2-0f12-4616-888d-012ee54104e7
 
 //get one question
 ###
-GET http://localhost:5000/questions/question/07d6674b-cc31-443b-aa07-2d80798deacc
+GET http://localhost:5000/questions/question/1e395902-fc4a-4dd4-bb8d-17805cc81e08
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYWJlNDA5LTRiZWYtNGE2MC1hNGZmLTIzMzQxNjkwOTU5ZiIsInVzZXJuYW1lIjoiQWxleG1haW5naSIsImVtYWlsIjoibUBnbWFpbC5jb20iLCJhYm91dCI6bnVsbCwicm9sZSI6InVzZXIiLCJ0aXRsZSI6bnVsbCwiZW1haWxTZW50IjpudWxsLCJpYXQiOjE2ODczNzQ5MTYsImV4cCI6MTY4NzczNDkxNn0.q45nz0HTich3DUVC2rCmj_Y-B2zUAyHXyq2yjMM-yVk
 
 
 
 # delete a question
 #####
-DELETE http://localhost:5000/questions/delete/10dc4c8a-e25c-4dbd-809b-bab6d5d753d6
+DELETE http://localhost:5000/questions/delete/19767810-8d37-4074-9729-172d4767acfb
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDVlOThiLTc2NzUtNDFiYi1hYjViLWRkNDBjYjUxODc2MSIsInVzZXJuYW1lIjoiWW91bmdib3kiLCJlbWFpbCI6InlvdW5nYm95QGV4YW1wbGUuY29tIiwiYWJvdXQiOiJJIGFtIGEgc29mdHdhcmUgZGV2ZWxvcGVyIHdpdGggb3ZlciA2IHllYXJzIG9mIGV4cGlyaWVuY2UgYW5kICBoYXZlIHdvcmtlZCBpbiBtb3JlIHRoYXQgMTAgcHJvamVjdHMiLCJyb2xlIjoiYWRtaW4iLCJ0aXRsZSI6IlNvZnR3YXJlIERldmVsb3BlciIsImVtYWlsU2VudCI6MSwiaWF0IjoxNjg3Mzc1MjAwLCJleHAiOjE2ODc3MzUyMDB9.u46C7Gv-AZU3sFzqGmjnHnqcHSG5qj93dq9BUKC4Lgg
 
 
 //update question
@@ -104,8 +125,10 @@ Content-Type:  application/json
 
 # POST answer
 ####
-POST http://localhost:5000/answers/07d6674b-cc31-443b-aa07-2d80798deacc/8961d036-ef55-47e1-b807-5c86929bbc27
+POST http://localhost:5000/answers/1e395902-fc4a-4dd4-bb8d-17805cc81e08/8961d036-ef55-47e1-b807-5c86929bbc27
 Content-Type:  application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjYWJlNDA5LTRiZWYtNGE2MC1hNGZmLTIzMzQxNjkwOTU5ZiIsInVzZXJuYW1lIjoiQWxleG1haW5naSIsImVtYWlsIjoibUBnbWFpbC5jb20iLCJhYm91dCI6bnVsbCwicm9sZSI6InVzZXIiLCJ0aXRsZSI6bnVsbCwiZW1haWxTZW50IjpudWxsLCJpYXQiOjE2ODczNzQ5MTYsImV4cCI6MTY4NzczNDkxNn0.q45nz0HTich3DUVC2rCmj_Y-B2zUAyHXyq2yjMM-yVk
+
 
 {
     "body": "the looong answer pt 5 "
@@ -141,7 +164,7 @@ Content-Type:  application/json
 
    # get comment by question id
 ######
-GET  http://localhost:5000/comments/3e4f4260-4562-430f-bea8-83c01c4d3ee7/
+GET  http://localhost:5000/comments/3e4f4260-4562-430f-bea8-83c01c4d3ee7
 
 
 
